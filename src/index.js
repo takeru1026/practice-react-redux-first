@@ -24,11 +24,20 @@ const counterReducer = (state = 0, action) => {
 			return state + 1;
 		case 'DECREMENT':
 			return state - 1;
+		default:
+			return '';
 	}
 };
 
 // store
 let store = createStore(counterReducer);
+
+store.subscribe(() => console.log(store.getState()));
+
+// dispatch
+store.dispatch(increment());
+store.dispatch(increment());
+store.dispatch(decrement());
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
